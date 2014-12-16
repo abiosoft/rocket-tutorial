@@ -82,14 +82,14 @@ nginx
 ### Copy the binary
 
 ```
-scp core@192.168.2.136:~/hello/hello.aci .
+scp core@192.168.12.138:~/hello.aci .
 mv hello.aci /usr/local/var/www/
 ```
 
 ### Run it.
 
 ```
-rkt run http://192.168.2.1:8080/hello.aci
+sudo rkt run http://192.168.12.1:8080/hello.aci
 ```
 
 ## Launch a Docker Container with Rocket
@@ -107,48 +107,39 @@ docker run --name=etcd coreos/etcd
 ### Export the Docker Container
 
 ```
-mkdir rootfs
+mkdir -p etcd-app/rootfs
 ```
 
 ```
-docker export etcd | sudo tar -x -C rootfs -f -
+docker export etcd | sudo tar -x -C etcd-app/rootfs -f -
 ```
 
 ### Create the app manifest
 
 ```
 {
-    "acVersion": "1.0.0",
-    "acKind": "AppManifest",
+    "acVersion": "0.1.1",
+    "acKind": "ImageManifest",
     "name": "coreos.com/etcd",
-    "os": "linux",
-    "arch": "amd64",
-    "exec": [
-        "/etcd -name node0"
-    ],
-    "ports": [
-        {
-            "name": "etcdclient",
-            "protocol": "tcp",
-            "port": 4001
-        },
-        {
-            "name": "etcdraft",
-            "protocol": "tcp",
-            "port": 7001
-        }
-
-    ],
+    "app": {
+        "exec": [
+            "/etcd -name node0"
+        ]
+    },
     "annotations": {
         "authors": "Kelsey Hightower <kelsey.hightower@gmail.com>"
     }
 }
 ```
 
+```
+cp etcd-manifest etcd-app/
+```
+
 ### Build the container
 
 ```
-actool build --app-manifest manifest.json rootfs etcd.aci
+actool build etcd-app etcd.aci
 ```
 
 ### Launch the container with Rocket
