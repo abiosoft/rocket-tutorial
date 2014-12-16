@@ -51,7 +51,7 @@ cp hello hello-app/rootfs/bin/
 ```
 
 ```
-actool build rootfs hello.aci
+actool build hello-app hello.aci
 ```
 
 ```
