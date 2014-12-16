@@ -61,7 +61,7 @@ actool validate hello.aci
 ### Launch a local application image
 
 ```
-rkt run hello.aci
+sudo rkt run hello.aci
 ```
 
 ### Testing with curl
