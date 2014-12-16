@@ -38,7 +38,7 @@ CGO_ENABLED=0 GOOS=linux go build -a -tags netgo -ldflags '-w' .
 ```
 
 ```
-actool validate manifest
+actool validate hello-manifest
 ```
 
 ```
@@ -46,7 +46,7 @@ mkdir -p hello-app/rootfs/bin
 ```
 
 ```
-cp manifest hello-app/
+cp hello-manifest hello-app/manifest
 cp hello hello-app/rootfs/bin/
 ```
 
