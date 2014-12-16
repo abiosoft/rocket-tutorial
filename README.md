@@ -23,11 +23,9 @@ CGO_ENABLED=0 GOOS=linux go build -a -tags netgo -ldflags '-w' .
 
 ```
 {
-    "acVersion": "1.0.0",
-    "acKind": "AppManifest",
+    "acVersion": "0.1.1",
+    "acKind": "ImageManifest",
     "name": "coreos.com/hello-1.0.0",
-    "os": "linux",
-    "arch": "amd64",
     "exec": [
         "/bin/hello"
     ],
