@@ -125,7 +125,7 @@ docker export etcd | sudo tar -x -C rootfs -f -
 {
     "acVersion": "1.0.0",
     "acKind": "AppManifest",
-    "name": "coreos.com/redis",
+    "name": "coreos.com/etcd",
     "os": "linux",
     "arch": "amd64",
     "exec": [
