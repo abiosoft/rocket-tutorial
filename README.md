@@ -133,7 +133,7 @@ docker export etcd | sudo tar -x -C etcd-app/rootfs -f -
 ```
 
 ```
-cp etcd-manifest etcd-app/
+cp etcd-manifest etcd-app/manifest
 ```
 
 ### Build the container
