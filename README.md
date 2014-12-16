@@ -52,11 +52,12 @@ mkdir rootfs/bin
 ```
 
 ```
+cp manifest.json rootfs/manifest
 cp hello rootfs/bin/
 ```
 
 ```
-actool build --app-manifest manifest.json rootfs hello.aci
+actool build rootfs hello.aci
 ```
 
 ```
