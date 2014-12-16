@@ -26,16 +26,11 @@ CGO_ENABLED=0 GOOS=linux go build -a -tags netgo -ldflags '-w' .
     "acVersion": "0.1.1",
     "acKind": "ImageManifest",
     "name": "coreos.com/hello-1.0.0",
-    "exec": [
-        "/bin/hello"
-    ],
-    "ports": [
-        {
-            "name": "www",
-            "protocol": "tcp",
-            "port": 5000
-        }
-    ],
+    "app": {
+        "exec": [
+            "/bin/hello"
+        ]
+    },
     "annotations": {
         "authors": "Kelsey Hightower <kelsey.hightower@gmail.com>"
     }
@@ -43,17 +38,16 @@ CGO_ENABLED=0 GOOS=linux go build -a -tags netgo -ldflags '-w' .
 ```
 
 ```
-actool validate manifest.json
+actool validate manifest
 ```
 
 ```
-mkdir rootfs
-mkdir rootfs/bin
+mkdir -p hello-app/rootfs/bin
 ```
 
 ```
-cp manifest.json rootfs/manifest
-cp hello rootfs/bin/
+cp manifest hello-app/
+cp hello hello-app/rootfs/bin/
 ```
 
 ```
